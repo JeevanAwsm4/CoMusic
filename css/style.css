@@ -19,10 +19,10 @@ header.form-page{
 }
 header.form-page h1{
     font-family: "Poppins", sans-serif;
-    background: rgb(36,0,0);
-    background: linear-gradient(90deg, rgba(36,0,0,1) 3%, rgba(121,9,9,1) 40%, rgba(0,0,0,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fff;
+}
+header.form-page h1 span{
+    color: #c8ede6;
 }
 section#form-page{
     text-align: center;
@@ -33,7 +33,8 @@ section#form-page .wrapper h1.top{
     font-family: "Poppins", sans-serif;
     font-size: 30px;
     margin-bottom: 30px;
-
+    color: #000;
+    opacity: 0.6;
 }
 section#form-page .wrapper .form-container{
     width: 25%;
@@ -51,31 +52,35 @@ section#form-page .wrapper .form-container form input{
     border: 1px solid rgba(121,9,9,1);
     border-radius: 6px;
     font-family: "Poppins", sans-serif;
+    background: none;
     font-size: 15px;
 }
 section#form-page .wrapper .form-container form button{
     width: 100%;
     margin-top: 10px;
-    background: rgb(36,0,0);
-    background: linear-gradient(90deg, rgba(36,0,0,1) 3%, rgba(121,9,9,1) 40%, rgba(0,0,0,1) 100%);
+    background: #5baf9f;
     color: #fff;
     padding: 20px 0;
-    border: none;
+    border: 1px solid #5baf9f;
     border-radius: 6px;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
     margin-bottom: 15px;
     cursor: pointer;
+    transition: all ease-in-out 0.1s;
 }
 section#form-page .wrapper .form-container form button:hover{
-    opacity: 0.9;
+    background: transparent;
+    color: #000;
 }
 section#form-page .wrapper .form-container h4{
     font-family: "Poppins", sans-serif;
     font-size: 15px;
+    color: #000;
+    opacity: 0.7;
 }
 section#form-page .wrapper .form-container h4 a{
-    color: rgba(121,9,9,1);
+    color: #ff5349;
 }
 section#form-page .wrapper .form-container .divider-wrapper{
     display: flex;
@@ -94,7 +99,7 @@ section#form-page .wrapper .form-container .divider-wrapper{
 }
 .divider-wrapper:before, .divider-wrapper:after {
     content: "";
-    border-bottom: 1px solid #c2c8d0;
+    border-bottom: 1px solid #646464;
     flex: 1 0 auto;
     height: .5em;
     margin: 0;
@@ -126,5 +131,163 @@ section#form-page .wrapper .form-container button.social-connect span.social-tex
     font-size: 17px;
 }
 section#form-page .wrapper .form-container button.social-connect:hover{
-    background: rgb(243 243 243);
+    background: #e3e3e3;
 }
+
+
+/* ------------main--------------- */
+.bg{
+    background: url(../images/headset2.jpg), no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+header.main{
+    padding: 40px 70px;
+    /* padding-bottom: 0; */
+    display: flex;
+    justify-content: space-between;
+}
+header.main h1{
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 40px;
+}
+header.main h1 span{
+    color: #c8ede6;
+}
+header.main ul{
+    display: flex;
+    align-items: center;
+}
+header.main ul li{
+    margin-right: 15px;
+}
+header.main ul li:last-child{
+    margin-right: 0;
+}
+header.main ul li a{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+header.main ul li span{
+    display: inline-block;
+    padding: 15px 20px;
+    background: #fec7c4;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 50px;
+}
+#hero{
+
+}
+#hero .wrapper{
+    padding: 0px 90px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#hero .wrapper .left{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+#hero .wrapper .left h1{
+    font-family: "Poppins", sans-serif;
+    font-size: 55px;
+    line-height: 130%;
+    color: #fff;
+}
+#hero .wrapper .left h1 span{
+    background: #c8ede6;
+    padding: 0 10px;
+    color: #ffafaa;
+    border-radius: 6px;
+}
+#hero .wrapper .left img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#hero .wrapper .right{
+    width: 50%;
+    text-align: center;
+    padding-top: 10%;
+}
+#hero .wrapper .right button{
+    font-family: "Poppins", sans-serif;
+    padding: 15px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #ffafaa;
+    font-size: 20px;
+    transition: all ease-in-out 0.1s;
+    margin-bottom: 10px;
+}
+#hero .wrapper .right button:hover{
+    transform: scale(1.05);
+}
+#hero .wrapper .right p{
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    margin-bottom: 30px;
+    opacity: 0.6;
+    padding: 0 25%;
+}
+
+
+
+.move {
+    /* width: 100%; */
+    /* height: 100vh; */
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+  .move button.one  {
+    background: rgb(255, 185, 0);
+    border: 0.5mm solid black;
+    border-radius: 5mm;
+    box-shadow: 3px 3px 0 black;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  .move .text {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: poppins;
+    z-index: 1;
+    position: relative;
+  }
+  .move .wave {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: url(../images/wave.svg);
+    background-size: 200% 100%;
+    top: 100%;
+    left: 0;
+    animation: wave 2s linear infinite;
+    transition: 0.5s;
+  }
+  @keyframes wave {
+    from {
+      background-position-x: 0;
+    }
+    to {
+      background-position-x: 200%;
+    }
+  }
+  .move button:hover .wave {
+    top: 50%;
+  }
+  .move button:hover {
+    box-shadow: 6px 6px 0 black;
+  }
