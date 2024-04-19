@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: "Poppins", sans-serif; */
+
+a{
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+
+header.form-page{
+    text-align: center;
+    padding: 50px;
+}
+header.form-page h1{
+    font-family: "Poppins", sans-serif;
+    background: rgb(36,0,0);
+    background: linear-gradient(90deg, rgba(36,0,0,1) 3%, rgba(121,9,9,1) 40%, rgba(0,0,0,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+section#form-page{
+    text-align: center;
+}
+section#form-page .wrapper{
+}
+section#form-page .wrapper h1.top{
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    margin-bottom: 30px;
+
+}
+section#form-page .wrapper .form-container{
+    width: 25%;
+    margin: 0 auto;   
+}
+section#form-page .wrapper .form-container form{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+section#form-page .wrapper .form-container form input{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(121,9,9,1);
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+section#form-page .wrapper .form-container form button{
+    width: 100%;
+    margin-top: 10px;
+    background: rgb(36,0,0);
+    background: linear-gradient(90deg, rgba(36,0,0,1) 3%, rgba(121,9,9,1) 40%, rgba(0,0,0,1) 100%);
+    color: #fff;
+    padding: 20px 0;
+    border: none;
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+section#form-page .wrapper .form-container form button:hover{
+    opacity: 0.9;
+}
+section#form-page .wrapper .form-container h4{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+section#form-page .wrapper .form-container h4 a{
+    color: rgba(121,9,9,1);
+}
+section#form-page .wrapper .form-container .divider-wrapper{
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 24px 0 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    vertical-align: baseline;
+    margin-bottom: 20px;
+}
+.divider-wrapper:before, .divider-wrapper:after {
+    content: "";
+    border-bottom: 1px solid #c2c8d0;
+    flex: 1 0 auto;
+    height: .5em;
+    margin: 0;
+}
+section#form-page .wrapper .form-container .divider-wrapper span.divider{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    flex: 0.2 0 auto;
+    margin: 0;
+    height: 12px;
+    overflow-y: hidden;
+}
+section#form-page .wrapper .form-container button.social-connect{
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid rgba(121,9,9,1);
+    border-radius: 6px;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+}
+section#form-page .wrapper .form-container button.social-connect img{
+    width: 25px;
+    margin-right: 30px;
+}
+section#form-page .wrapper .form-container button.social-connect span.social-text{
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+}
+section#form-page .wrapper .form-container button.social-connect:hover{
+    background: rgb(243 243 243);
+}
