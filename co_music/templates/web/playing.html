@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{room.code}}
+    {{room.admin_name}}
+    {% for user in room.users.all %}
+        {{user.first_name}}
+    {% endfor %}
+    <ul>
+        {% for file in files %}
+            <li>
+                <audio id="audio">
+                    <source src="{{media_root}}{{file.file}}" type="audio/mpeg">
+                </audio>
+                {% if request.user == room.admin %}
+                <button class="play" data-src="{{media_root}}{{file.file}}">Play</button>
+                <button class="pause">Pause</button>
+                <button class="skip">Skip</button>
+                <button class="delete" data-id="{{file.id}}">Delete</button>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+<script>
+const audio = document.getElementById('audio');
+
+
+const logPlaybackInfo = setInterval(() => {
+    console.log("Current time:", audio.currentTime);
+    console.log("Total duration:", audio.duration);
+}, 1000);
+
+
+const playButton = document.querySelector('.play');
+
+playButton.addEventListener('click', async () => {
+    audio.play();
+});
+
+const pauseButton = document.querySelector('.pause');
+
+pauseButton.addEventListener('click', async () => {
+    audio.pause();
+});
+
+const skipButton = document.querySelector('.skip');
+
+skipButton.addEventListener('click', async () => {
+});
+
+const deleteButton = document.querySelector('.delete');
+
+deleteButton.addEventListener('click', async () => {
+});
+
+
+</script>
+</html>
