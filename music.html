@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="css/music.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <section class="sidemain">
+      <aside class="sidebar">
+        <div class="top">
+          <div class="logo">
+            <img src="images/room.png" alt="icon">
+            <h2>Room 1</h2>
+          </div>
+          <span class="label">created by</span>
+          <h4>Devanarayanan</h4>
+        </div>
+        <h5>Joined Users</h5>
+        <hr/>
+        <ul class="links">
+          <li>
+            <h3 >Devanandha</h3>
+            <span>Joined</span>
+          </li>
+          <li>
+            <h3>Devaprya</h3>
+            <span>Joined</span>
+          </li>
+
+          <div class="below">
+            <!-- <button>End Room</button> this is for admin -->
+            <button>Leave Room</button> <!--this is for joined user-->
+          </div>
+        
+      </aside>
+    </section>
+
+    
+    
+    <section class="main">
+      <section class="one">
+        <div class="animation">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+      <section class="two">
+        <div class="wrapper">
+          <div class="top-bar">
+            <span>This song played by Devaprya</span>
+          </div>
+          <div class="img-area">
+            <img src="images/music-cd.png" alt="image" />
+          </div>
+          <div class="song-details">
+            <p class="name"></p>
+            <p class="artist"></p>
+            <div class="import">
+              <label for="music-file">
+                <span>
+                  <img src="images/upload-music.png" alt="icon">
+                  <p>Upload Music</p>
+                </span>
+              </label>
+              <input type="file" id="music-file" accept="audio/*">
+            </div>
+          </div>
+          <div class="progress-area">
+            <div class="progress-bar">
+              <audio id="main-audio" src=""></audio>
+            </div>
+            <div class="song-timer">
+              <span class="current-time">0:00</span>
+              <span class="max-duration">0:00</span>
+            </div>
+          </div>
+          <div class="controls">
+            <i id="repeat-plist" class="material-icons" title="Playlist looped"
+              >repeat</i
+            >
+            <i id="prev" class="material-icons">skip_previous</i>
+            <div class="play-pause">
+              <i class="material-icons play">play_arrow</i>
+            </div>
+            <i id="next" class="material-icons">skip_next</i>
+            <i id="more-music" class="material-icons">queue_music</i>
+          </div>
+          <div class="music-list">
+            <div class="header">
+              <div class="row">
+                <i class="list material-icons">queue_music</i>
+                <span>Music list</span>
+              </div>
+              <i id="close" class="material-icons">close</i>
+            </div>
+            <ul></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="one">
+        <div class="animation">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+    </section>
+
+    <script src="js/music-list.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
