@@ -182,15 +182,11 @@ header.main ul li span{
     font-size: 25px;
     border-radius: 50px;
 }
-.bg.flex{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
 #hero{
 }
 #hero .wrapper{
     padding: 0px 90px;
+    padding-top: 120px;
     padding-right: 20px;
     display: flex;
     justify-content: space-between;
@@ -221,6 +217,7 @@ header.main ul li span{
 #hero .wrapper .right{
     width: 50%;
     text-align: center;
+    /* margin-top: 100px; */
 }
 #hero .wrapper .right button{
     font-family: "Poppins", sans-serif;
@@ -245,16 +242,18 @@ header.main ul li span{
     padding: 0 25%;
 }
 footer{
-    padding: 0 70px;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
+    padding: 10px 70px;
+    text-align: center;
+    /* padding-bottom: 20px; */
+    background: #000;
 }
 footer .left{
 
 }
 footer  p{
     font-size: 16px;
-    opacity: 0.6;
-    color: #000;
+    color: #fff;
+}
+footer p a{
+    color: #5baf9f;
 }
