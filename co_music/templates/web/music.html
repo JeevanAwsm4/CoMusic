@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SyncX | Music Room</title>
+    <link rel="icon" href="images/music-favicon.jpg">
+    <link rel="stylesheet" href="{% static 'css/music.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<section class="sidemain">
+    <aside class="sidebar">
+        <div class="top">
+            <div class="logo">
+                <img src="{% static 'images/room.png' %}" alt="icon">
+                <h2>{{room.code}}</h2>
+            </div>
+            <span class="label">created by</span>
+            <h4>{{room.admin_name}}</h4>
+        </div>
+        <h5>Joined Users</h5>
+        <hr/>
+        <ul class="links">
+            {% for user in room.users.all %}
+                <li>
+                    <h3 >{{user.first_name}}</h3>
+                    <span>Joined</span>
+                </li>
+            {% endfor %}
+            <div class="below">
+                {% if request.user == room.admin %}
+                    <button class="end-room">End Room</button>
+                {% else %}
+                    <button class="leave-room">Leave Room</button>
+                {% endif %}
+            </div>
+        </ul>
+    </aside>
+</section>
+<section class="main">
+    <section class="one">
+        <div class="animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+    <section class="two">
+        <div class="wrapper">
+            <div class="img-area">
+                <img src="{% static 'images/music-cd.png' %}" alt="image" />
+            </div>
+            <div class="song-details">
+                <p class="name"></p>
+                <p class="artist"></p>
+                {% if request.user == room.admin %}
+                    <div class="import">
+<form enctype="multipart/form-data" id="music-upload-form" action="{% url 'web:upload_music' room.code %}" method="POST">
+                            <label for="music-file">
+                                <span>
+                                    <img src="{% static 'images/upload-music.png' %}" alt="icon">
+                                </span>
+                            </label>
+                            {{ form.file }}
+                            <button type="submit"><p>Upload</p></button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar">
+                    <audio id="main-audio" autoplay>
+                        <source src="{{media_root}}{{files.file}}" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="song-timer">
+                    <span class="current-time">0:00</span>
+                    <span class="max-duration">0:00</span>
+                </div>
+            </div>
+                <div class="controls">
+            {% if request.user == room.admin %}
+                    <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+                    <i id="prev" class="material-icons">skip_previous</i>
+            {% endif %}
+                    <div class="play-pause">
+                        <i class="material-icons play">play_arrow</i>
+                    </div>
+            {% if request.user == room.admin %}
+                    <i id="next" class="material-icons">skip_next</i>
+                    <i id="more-music" class="material-icons">queue_music</i>
+             {% endif %}
+                </div>
+            <div class="music-list">
+                <div class="header">
+                    <div class="row">
+                        <i class="list material-icons">queue_music</i>
+                        <span>Music list</span>
+                    </div>
+                    <i id="close" class="material-icons">close</i>
+                </div>
+                <ul></ul>
+            </div>
+        </div>
+    </section>
+    <section class="one">
+        <div class="animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/music-list.js"></script>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    $(document).ready(function() {
+        var audio = document.getElementById('main-audio');
+        var playPauseButton = $('.play-pause i');
+        var currentTimeDisplay = $('.current-time');
+        var maxDurationDisplay = $('.max-duration');
+        var isPlaying = false;
+
+        function updateTimeDisplay() {
+            var currentTime = formatTime(audio.currentTime);
+            var duration = formatTime(audio.duration);
+            currentTimeDisplay.text(currentTime);
+            maxDurationDisplay.text(duration);
+        }
+
+        function formatTime(time) {
+            var minutes = Math.floor(time / 60);
+            var seconds = Math.floor(time % 60);
+            return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                playPauseButton.text('play_arrow');
+            } else {
+                audio.play();
+                isPlaying = true;
+                playPauseButton.text('pause');
+            }
+        }
+
+        playPauseButton.click(function() {
+            togglePlayPause();
+        });
+
+        audio.addEventListener('timeupdate', function() {
+            updateTimeDisplay();
+            if (isPlaying) {
+                sendCurrentTime();
+            }
+        });
+
+        function sendCurrentTime() {
+            var position = audio.currentTime;
+            var length = audio.duration;
+            var csrftoken = getCookie('csrftoken');
+            $.ajax({
+                url: '/toggle_playback/{{ room.code }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+                data: {
+                    position: position,
+                    length: length
+                },
+                success: function(response) {
+                    console.log('Current time updated successfully');
+                },
+                error: function(error) {
+                    console.error('Error updating current time:', error);
+                }
+            });
+        }
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        setInterval(function() {
+            if (isPlaying) {
+                sendCurrentTime();
+            }
+        }, 1000);
+
+        $('#music-upload-form').submit(function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Get the action URL from the form's action attribute
+    var actionUrl = $(this).attr('action');
+
+    // Get form data
+    var formData = new FormData($(this)[0]);
+    var csrftoken = getCookie('csrftoken');
+
+    // Send form data using AJAX
+    $.ajax({
+        url: actionUrl, // Use the extracted action URL here
+        type: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken
+        },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Music uploaded successfully.',
+            });
+        },
+        error: function(error) {
+            // Handle error response
+            console.error('Error uploading music:', error);
+            // Display error message to the user, if needed
+        }
+    });
+});
+
+
+{% if not request.user == room.admin  %}
+function receivePlaybackStatusForNonAdmin() {
+    $.ajax({
+        url: '/get_playback_status/{{room.code}}',
+        method: 'GET',
+        success: function(response) {
+            var playbackStatus = response.is_playing;
+            console.log(response);
+            var currentTime = response.current_position;
+
+            if (playbackStatus === true) {
+                isPlaying = true;
+                audio.play();
+                playPauseButton.text('pause');
+            } else {
+                audio.pause();
+                isPlaying = false;
+                playPauseButton.text('play_arrow');
+            }
+
+            audio.currentTime = currentTime;
+            updateTimeDisplay();
+        },
+        error: function(error) {
+            console.error('Error fetching playback status:', error);
+        }
+    });
+}
+
+setInterval(function() {
+    receivePlaybackStatusForNonAdmin();
+}, 1000);
+{% endif %}
+
+        function leaveRoom() {
+            var csrftoken = getCookie('csrftoken');
+            $.ajax({
+                url: '/leave_room/{{ room.code }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+                success: function(response) {
+                    // Handle success response
+                    console.log('Left room successfully');
+                    window.location.href = "/";
+                    // Redirect to some page or perform any other action
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error leaving room:', error);
+                }
+            });
+        }
+
+        // Function to handle ending the room
+        function endRoom() {
+            var csrftoken = getCookie('csrftoken');
+            $.ajax({
+                url: '/delete_room/{{ room.code }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+                success: function(response) {
+                    // Handle success response
+                    console.log('Room ended successfully');
+                    window.location.href = "/";
+                    // Redirect to some page or perform any other action
+                },
+                error: function(error) {
+                    // Handle error response
+                    console.error('Error ending room:', error);
+                }
+            });
+        }
+         $('button.leave-room').click(function() {
+            leaveRoom();
+        });
+
+        // Event listener for end room button click
+        $('button.end-room').click(function() {
+            endRoom();
+        });
+    });
+</script>
+</body>
+</html>

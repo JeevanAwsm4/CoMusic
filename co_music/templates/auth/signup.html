@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="icon" href="{% static 'images/music-favicon.jpg' %}">
+    <title>SyncX | Sign Up Page</title>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {% for field in signup_form %}
-            {{field}}
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="bg">
+        <header class="form-page">
+            <h1><span>S</span>yncX.</h1>
+        </header>
+        <section id="form-page">
+            <section class="wrapper">
+                <h1 class="top">Create an account</h1>
+                <div class="form-container">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for field in signup_form %}
+                            {{field}}
+                        {% endfor %}
+                        <button type="submit">Continue</button>
+                    </form>
+                    <h4>Already have an account? <a href="{% url 'users:login' %}">Login</a></h4>
+                </div>
+            </section>
+        </section>
+
+    </div>
 </body>
 </html>

@@ -1,0 +1,260 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: "Poppins", sans-serif; */
+
+a{
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+
+header.form-page{
+    text-align: center;
+    padding: 50px;
+    /* color: ; */
+}
+header.form-page h1{
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+}
+header.form-page h1 span{
+    color: #c8ede6;
+}
+section#form-page{
+    text-align: center;
+}
+section#form-page .wrapper{
+}
+section#form-page .wrapper h1.top{
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #000;
+    opacity: 0.6;
+}
+section#form-page .wrapper .form-container{
+    width: 25%;
+    margin: 0 auto;   
+}
+section#form-page .wrapper .form-container form{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+section#form-page .wrapper .form-container form input{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(121,9,9,1);
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    background: none;
+    font-size: 15px;
+}
+section#form-page .wrapper .form-container form button{
+    width: 100%;
+    margin-top: 10px;
+    background: #5baf9f;
+    color: #fff;
+    padding: 20px 0;
+    border: 1px solid #5baf9f;
+    border-radius: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all ease-in-out 0.1s;
+}
+section#form-page .wrapper .form-container form button:hover{
+    background: transparent;
+    color: #000;
+}
+section#form-page .wrapper .form-container h4{
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    color: #000;
+    opacity: 0.7;
+}
+section#form-page .wrapper .form-container h4 a{
+    color: #ff5349;
+}
+section#form-page .wrapper .form-container .divider-wrapper{
+    display: flex;
+    flex-direction: row;
+    text-transform: uppercase;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    padding: 24px 0 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    vertical-align: baseline;
+    margin-bottom: 20px;
+}
+.divider-wrapper:before, .divider-wrapper:after {
+    content: "";
+    border-bottom: 1px solid #646464;
+    flex: 1 0 auto;
+    height: .5em;
+    margin: 0;
+}
+section#form-page .wrapper .form-container .divider-wrapper span.divider{
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    flex: 0.2 0 auto;
+    margin: 0;
+    height: 12px;
+    overflow-y: hidden;
+}
+section#form-page .wrapper .form-container button.social-connect{
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid rgba(121,9,9,1);
+    border-radius: 6px;
+    padding: 10px 20px;
+    width: 100%;
+    cursor: pointer;
+}
+section#form-page .wrapper .form-container button.social-connect img{
+    width: 25px;
+    margin-right: 30px;
+}
+section#form-page .wrapper .form-container button.social-connect span.social-text{
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+}
+section#form-page .wrapper .form-container button.social-connect:hover{
+    background: #e3e3e3;
+}
+
+
+/* ------------main--------------- */
+.bg{
+    background: url(../images/headset-bg.jpg), no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+header.main{
+    padding: 40px 70px;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+header.main h1{
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 40px;
+}
+header.main h1 span{
+    color: #c8ede6;
+}
+header.main ul{
+    display: flex;
+    align-items: center;
+}
+header.main ul li{
+    margin-right: 15px;
+}
+header.main ul li:last-child{
+    margin-right: 0;
+}
+header.main ul li a{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+header.main ul li span{
+    display: inline-block;
+    padding: 15px 20px;
+    background: #fec7c4;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 50px;
+}
+.bg.flex{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+#hero{
+}
+#hero .wrapper{
+    padding: 0px 90px;
+    padding-right: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#hero .wrapper .left{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+#hero .wrapper .left h1{
+    font-family: "Poppins", sans-serif;
+    font-size: 55px;
+    line-height: 130%;
+    color: #fff;
+    margin-top: -50px;
+}
+#hero .wrapper .left h1 span{
+    background: #c8ede6;
+    padding: 0 10px;
+    color: #ffafaa;
+    border-radius: 6px;
+}
+#hero .wrapper .left img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#hero .wrapper .right{
+    width: 50%;
+    text-align: center;
+}
+#hero .wrapper .right button{
+    font-family: "Poppins", sans-serif;
+    padding: 15px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #ffafaa;
+    font-size: 20px;
+    transition: all ease-in-out 0.1s;
+    margin-bottom: 10px;
+}
+#hero .wrapper .right button:hover{
+    transform: scale(1.05);
+}
+#hero .wrapper .right p{
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    margin-bottom: 30px;
+    opacity: 0.6;
+    padding: 0 25%;
+}
+footer{
+    padding: 0 70px;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+footer .left{
+
+}
+footer  p{
+    font-size: 16px;
+    opacity: 0.6;
+    color: #000;
+}

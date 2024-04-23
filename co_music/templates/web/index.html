@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/music-favicon.jpg' %}">
+    <title>SyncX | Home</title>
 </head>
 <body>
-
+    <div class="bg flex">
+        <header class="main">
+            <h1 class="left"><span>Sync</span>X.</h1>
+            <ul>
+                <li><span>A</span></li>
+            </ul>
+        </header>
+        <section id="hero">
+            <section class="wrapper">
+                <div class="left">
+                    <h1>ENJOY <br> THE SONG <br> <span>TOGETHER.</span> </h1>
+                </div>
+                <div class="right">
+                    <button><a  style='text-decoration : none;color : #fff;' href="{% url 'web:create_room' %}">Create Room</a></button>
+                    <p>Create room and enjoy the music with your friends.</p>
+                    <button id="join-room">Join Room</button>
+                    <p>Join others room with redeem code and enjoy the music together.</p>
+                </div>
+            </section>
+        </section>
+        <footer>
+            <div class="left">
+                <p>Developed by <a href="https://www.instagram.com/nexift.team/" target="_blank" title="https://www.instagram.com/nexift.team/">Nexift.Team</a>.</p>
+            </div>
+            <div class="right">
+                <p>&copy;Copyrights 2024.</p>
+            </div>
+        </footer>
+    </div>
 </body>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const joinRoomButton = document.getElementById('join-room');
+
+        joinRoomButton.addEventListener('click', function() {
+            // Display SweetAlert input popup
+            Swal.fire({
+                title: 'Join Room',
+                input: 'text',
+                inputPlaceholder: 'Enter Room Code',
+                showCancelButton: true,
+                confirmButtonText: 'Join',
+                cancelButtonText: 'Cancel',
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Room code is required';
+                    }
+                }
+            }).then((result) => {
+                const roomCode = result.value;
+                window.location.href = '/room/' + roomCode
+            });
+        });
+
+        // Function to retrieve CSRF token from cookie
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+
 </html>

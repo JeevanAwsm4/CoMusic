@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/music-favicon.jpg' %}">
+    <title>SyncX | login Page</title>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="email" placeholder="Enter MAIL" />
-        <input type="text" name="password" placeholder="password" />
-        <button type="submit"> Submit</button>
-    </form>
+    <div class="bg">
+        <header class="form-page">
+            <h1><span>S</span>yncX.</h1>
+        </header>
+        <section id="form-page">
+            <section class="wrapper">
+                <h1 class="top">Login to your account</h1>
+                <div class="form-container">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input name="email" type="email" placeholder="Email address" required>
+                        <input name="password" type="password" placeholder="Password" required>
+                        <button type="submit">Continue</button>
+                    </form>
+                    <h4>Don't have an account? <a href="{% url 'users:signup' %}">SignUp</a></h4>
+                    </button>
+                </div>
+            </section>
+        </section>
+    </div>
 </body>
 </html>
